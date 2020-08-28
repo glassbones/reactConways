@@ -64,8 +64,8 @@ export default function MyMenu(props) {
 
   const actions=[
     { icon: <DirectionsRunIcon onClick={ ()=> props.props.clickHandleSpeed() }  />, name: 'Toggle Speed' },
-    { icon: <DeleteIcon onClick={ ()=> props.props.clearOrRandomize() }/>, name: 'Clear Grid' },
-    { icon: <SwapCallsIcon onClick={ ()=> props.props.clearOrRandomize(1) }/>, name: 'Randomize' },
+    { icon: <DeleteIcon onClick={ ()=> props.props.clearOrRandomize(false) }/>, name: 'Clear Grid' },
+    { icon: <SwapCallsIcon onClick={ ()=> props.props.clearOrRandomize(true) }/>, name: 'Randomize' },
     { icon: <FavoriteIcon />, name: 'Presets' },
     { icon: <FileCopyIcon onClick={ ()=> props.props.clickHandleCopy() } />, name: 'Copy JSON' },
     { icon: <PublishIcon onClick={ ()=> props.props.clickHandleUpload() } />, name: 'Upload JSON' },

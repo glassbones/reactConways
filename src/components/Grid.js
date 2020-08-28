@@ -8,7 +8,15 @@ import {isActiveState} from '../utils/States'
 import {useRecoilState} from 'recoil'
 import produce from 'immer';
 import { Container } from "@material-ui/core";
-import { flip, presetOne } from '../utils/Data'
+import { 
+  flip,     
+  presetOne,
+  presetSwirl,
+  presetSmile,
+  presetPulsar,
+  presetRorshak,
+  presetSgc 
+} from '../utils/Data'
 
 import MyMenu from './MyMenu'
 
@@ -78,17 +86,16 @@ const Grid = () => {
 
  
   const clearOrRandomize = (bool) => {
-    bool 
-    ?
-    grid.map((el, ind) => 
-      el.map((ell, indX) => (ell = 0)))
-    :
-    console.log('random')
-    grid.map((el, ind) => 
-    el.map((ell, indX) => (
-      ell = flip ? 0 : 
-      produce(grid, gridClone => {
-        {gridClone[ind][indX] = 1}}))))      
+      if (isActive) {return}
+      if(bool){
+        const rows = [];
+        for (let i = 0; i < rowNum; i++) {
+            rows.push(Array.from(Array(colNum), () => Math.random() > .9 ? 1 : 0))
+        }
+        console.log('random seed generated')
+        setGrid(rows)
+      }
+      else setGrid(Array.from({length: colNum}).map(() => Array.from({length: rowNum}).fill(0)))
   }
 
   const loadGrid=(input)=>{
@@ -218,28 +225,6 @@ const Grid = () => {
               simulate()
             }}}>
           {!isActive ? <PlayArrow /> : <Pause/>}
-        </IconButton>
-
-        <IconButton  //start button
-          color="primary" 
-          aria-label="slow motion button"
-          onClick={()=> {clickHandleSpeed()}}>
-           <Pause/>
-        </IconButton>
-
-        <IconButton  //start button
-          color="primary" 
-          aria-label="clear grid"
-          // wipe grid cheat
-          onClick={()=> window.location.reload()}> 
-           <Pause/>
-        </IconButton>
-
-        <IconButton  //start button
-          color="primary" 
-          aria-label="clear grid">
-          // wipe grid cheat
-           <PlayArrow/>
         </IconButton>
 
       </ThemeProvider>
