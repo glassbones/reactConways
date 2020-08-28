@@ -3,9 +3,6 @@ import IconButton from '@material-ui/core/IconButton';
 import green from '@material-ui/core/colors/green'
 import { makeStyles, createMuiTheme, ThemeProvider, } from '@material-ui/core/styles';
 import {Pause, PlayArrow } from '@material-ui/icons/';
-import Typography from '@material-ui/core/Typography';
-import {isActiveState} from '../utils/States'
-import {useRecoilState} from 'recoil'
 import produce from 'immer';
 import { Container } from "@material-ui/core";
 import { 
@@ -29,7 +26,6 @@ const fastUpdate = 25
 const slowUpdate = 300
 const ops = [[0,1],[0,-1],[1,-1],[-1,1],[1,1],[-1,-1],[1,0],[-1,0]]
 let genRef;
-let genCount;
 
 const gridStyle = () => ({
   display: 'grid',
@@ -47,26 +43,12 @@ const cellStyle = (bool) => ({
   transform: bool ? "scale(.98,.98) rotate(0deg)" : flip() ? "scale(1.1,1.1) rotate(45deg)" : "scale(1.1,1.1) rotate(45deg)", 
 })
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  gridBg: {
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.success.dark : theme.palette.success.dark,
-  },
-  },
-}));
 
 const theme = createMuiTheme({
   palette: {
     primary: green
   },
 });
-
-
-
 
 // Grid
 const Grid = () => {
@@ -100,8 +82,7 @@ const Grid = () => {
 
   const loadGrid=(input)=>{
     setGrid(produce(grid, gridClone => {
-      for (let xy of input){ 
-        {gridClone[xy[1]][xy[0]] = 1 }}}))
+      for (let xy of input){ gridClone[xy[1]][xy[0]] = 1 }}))
         // {gridClone[xy[1]+2][xy[0]+1] = 1 }}}))
   }
 

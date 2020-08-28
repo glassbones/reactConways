@@ -1,16 +1,11 @@
 import React from 'react';
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { makeStyles, } from '@material-ui/core/styles';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
-import SaveIcon from '@material-ui/icons/Save';
-import PrintIcon from '@material-ui/icons/Print';
-import ShareIcon from '@material-ui/icons/Share';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import EditIcon from '@material-ui/icons/Edit';
-
 import PublishIcon from '@material-ui/icons/Publish'
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -38,19 +33,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
 }));
-
-const overRide = createMuiTheme({
-    overrides: {
-      // Style sheet name ⚛️
-      MuiButton: {
-        // Name of the rule
-        text: {
-          // Some CSS
-          color: 'red',
-        },
-      },
-    },
-  });
 
 //
 
