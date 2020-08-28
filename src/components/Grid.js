@@ -101,12 +101,14 @@ const Grid = () => {
   const loadGrid=(input)=>{
     setGrid(produce(grid, gridClone => {
       for (let xy of input){ 
-        {gridClone[xy[1]+2][xy[0]+1] = 1 }}}))
+        {gridClone[xy[1]][xy[0]] = 1 }}}))
+        // {gridClone[xy[1]+2][xy[0]+1] = 1 }}}))
   }
 
-  const clickHandleUpload = (input) => {
+  const clickHandleUpload = () => {
     var userInput = prompt("Please enter your JSON", "[[0,0],[0,1][0,2][0,3]]");
-    if (userInput != null) loadGrid([[7,15],[9,15],[8,16],[7,17],[9,17]])
+    if (userInput != null){ loadGrid(JSON.parse(userInput)) }
+    else alert('Your submission was empty :(')
   }
 
   function clickHandleCopy() {
@@ -135,6 +137,7 @@ const Grid = () => {
     if (!activeRef.current) {
       if(genRef){
         genRef.innerHTML = 0
+        genRef.style.display = "none"
       }
       return;}
 
@@ -168,6 +171,7 @@ const Grid = () => {
       if(!genRef){ 
         genRef = document.getElementById('test')
         genRef.style.opacity = "1";
+        genRef.style.display = "inline";
       }
       genRef.innerHTML = (`Gen:` + `${parseInt(genRef.innerHTML.replace(/\D/g,''))+ 1}`)
       //delay before updating
@@ -189,15 +193,6 @@ const Grid = () => {
       <MyMenu props={menuProps} style={{display: 'inline', position: 'fixed'}}></MyMenu>
 
       <div style={gridStyle()}>
-        <Typography style={{
-          display: 'inline',
-          opacity: "0",
-          position: 'relative',
-          marginLeft: '5px' }}
-          id={'test'}
-          variant="body1">
-          {0}
-        </Typography>
         {grid.map((row, rowIdx) =>
           row.map((col, colIdx) => (
             <div
@@ -228,6 +223,17 @@ const Grid = () => {
         </IconButton>
 
       </ThemeProvider>
+
+      <p style={{
+          display: 'none',
+          opacity: "0",
+          width: 0,
+          height: 0,
+          position: 'relative',
+          pointerEvents: "none",}}
+          id={'test'}>
+          {0}
+        </p>
       
     </Container>
   )

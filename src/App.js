@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
   main: {
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     color:
     theme.palette.type === 'light' ? theme.palette.success.dark : theme.palette.success.dark,
   },
@@ -39,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.success.dark : theme.palette.success.dark,
   },
+  typography: {
+    flexGrow: 1,
+        align: "center"
+  }
 }));
 
 //<div style={{color:'black', display:'inline', position: 'fixed'}}>ACTIVE </div>
@@ -52,7 +60,7 @@ const App = () => {
     <div className={classes.root}>
       <CssBaseline />
       <Container component="main" className={classes.main} maxWidth="md">
-        <Typography variant="body1">Draw inside the box then press play.</Typography>
+        <Typography variant="body1" className={classes.typography} >Draw inside the box then press play.</Typography>
         <Grid/>
       </Container>
     </div>
