@@ -4,20 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-//<div style={{color:'black', display:'inline', position: 'fixed'}}>ACTIVE </div>
-
 // App
 
 const App = () => {
@@ -67,18 +52,3 @@ const App = () => {
   );
 }
 export default App;
-
-/*
-<Typography variant="h3" component="h1" gutterBottom>
-Conway's Game of Life
-</Typography>
-*/
-
-/*
-  <footer className={classes.footer}>
-    <Container maxWidth="sm">
-      <Typography variant="body1">Michael Johnson</Typography>
-      <Copyright />
-    </Container>
-  </footer>
-*/
